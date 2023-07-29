@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.combinations"
+    namespace = "com.grokin.combinations"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.combinations"
+        applicationId = "com.grokin.combinations"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -63,4 +63,6 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation ("com.chargemap.compose:numberpicker:1.0.3")
+
 }

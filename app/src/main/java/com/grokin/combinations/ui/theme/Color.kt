@@ -1,4 +1,4 @@
-package com.example.combinations.ui.theme
+package com.grokin.combinations.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

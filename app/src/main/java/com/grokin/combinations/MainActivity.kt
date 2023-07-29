@@ -1,8 +1,9 @@
-package com.example.combinations
+package com.grokin.combinations
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -10,7 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.combinations.ui.theme.CombinationsTheme
+import com.grokin.combinations.ui.theme.CombinationsTheme
+import androidx.compose.runtime.*
+import com.chargemap.compose.numberpicker.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +34,11 @@ class MainActivity : ComponentActivity() {
                         builder.append(",")
                     }
                     Greeting(builder.toString())
+
+                    Row {
+                        SquaresPicker()
+                        TotalPicker()
+                    }
                 }
             }
         }
@@ -72,4 +80,27 @@ fun GreetingPreview() {
     CombinationsTheme {
         Greeting("Android")
     }
+}
+
+@Composable
+private fun SquaresPicker() {
+    var state by remember { mutableStateOf(0) }
+    NumberPicker(
+        value = state,
+        range = 1..9,
+        onValueChange = {
+            state = it
+        }
+    )
+}
+@Composable
+private fun TotalPicker() {
+    var state by remember { mutableStateOf(0) }
+    NumberPicker(
+        value = state,
+        range = 1..9,
+        onValueChange = {
+            state = it
+        }
+    )
 }

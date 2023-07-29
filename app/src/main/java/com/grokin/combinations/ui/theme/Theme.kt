@@ -1,4 +1,4 @@
-package com.example.combinations.ui.theme
+package com.grokin.combinations.ui.theme
 
 import android.app.Activity
 import android.os.Build

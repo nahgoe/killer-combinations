@@ -1,4 +1,4 @@
-package com.example.combinations
+package com.grokin.combinations
 
 import org.junit.Test
 

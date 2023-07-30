@@ -77,37 +77,40 @@ class MainActivity : ComponentActivity() {
                     val min by squaresViewModel.min.observeAsState(3)
                     val max by squaresViewModel.max.observeAsState(16)
 
-
-                    Row(
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Column(
+                    Column {
+                        Row(
                             Modifier
-                                .padding(16.dp)
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.Center
                         ) {
-                            SquaresPicker(sq) { squaresViewModel.onSquaresChange(it) }
-                        }
-                        Column(
-                            Modifier
-                                .padding(16.dp)
-                        ) {
-                            TotalPicker(to, min, max) { squaresViewModel.onTotalChange(it) }
-                        }
-                    }
-                    Row {
-                        val res = combinations(sq, to)
-                        val builder = StringBuilder("boogie")
-                        for (c in res) {
-                            for (n in c) {
-                                builder.append(n)
+                            Column(
+                                Modifier
+                                    .padding(16.dp)
+                            ) {
+                                SquaresPicker(sq) { squaresViewModel.onSquaresChange(it) }
                             }
-                            builder.append(",")
+                            Column(
+                                Modifier
+                                    .padding(16.dp)
+                            ) {
+                                TotalPicker(to, min, max) { squaresViewModel.onTotalChange(it) }
+                            }
                         }
-                        Greeting(builder.toString())
+                        Row(
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Column {
+                                val res = combinations(sq, to)
+                                for (c in res) {
+                                    Combination(c)
+                                }
 
+                            }
+                        }
                     }
                 }
             }
@@ -154,6 +157,15 @@ class MainActivity : ComponentActivity() {
         )
     }
 
+    @Composable
+    private fun Combination(array: List<Int>) {
+        val builder = StringBuilder()
+
+        for (n in array) {
+            builder.append(n)
+        }
+        Text(text = builder.toString())
+    }
 }
 
 @Composable
